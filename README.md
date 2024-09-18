@@ -26,10 +26,7 @@ Ensure you have Python 3 installed on your system. No external libraries are req
    python cryptarithmetic_puzzle_solver.py
 ## Example
 
-    SEND
-+   MORE
--------
-  MONEY
+    SEND+   MORE = MONEY
 
 ## Solutions:
 S = 9
