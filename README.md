@@ -33,6 +33,7 @@ Ensure that you have Python 3 installed on your system. This project does not re
     SEND+   MORE = MONEY
 
 ## 📝 Solutions:
+
 S = 9
 E = 5
 N = 6
@@ -43,6 +44,22 @@ R = 8
 Y = 2
 
 ![image](https://github.com/user-attachments/assets/bafc9601-b85b-4fee-92cf-2242e4d9333d)
+
+```python
+def visualize_mapping(mapping):
+    """Function to visualize the mapping of letters to digits using a bar chart."""
+    df = pd.DataFrame(list(mapping.items()), columns=["Letter", "Digit"])
+    df = df.sort_values(by="Letter")  # Sort by letter for better visualization
+    
+    # Plot a bar chart to visualize the mapping
+    df.plot(kind="bar", x="Letter", y="Digit", legend=False)
+    plt.title("Letter to Digit Mapping")
+    plt.ylabel("Digit")
+    plt.xticks(rotation=0)
+    plt.show()
+```
+
+![image](https://github.com/user-attachments/assets/d16bdf14-1e1c-447c-b859-bcfde4f1fd34)
 
 ## ⚙️How It Works
 1. Input Parsing: The puzzle words are treated as numbers, with unknown digits represented by letters.
