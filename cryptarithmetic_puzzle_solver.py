@@ -8,6 +8,20 @@ Original file is located at
 """
 
 from itertools import permutations
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def visualize_mapping(mapping):
+    """Function to visualize the mapping of letters to digits using a bar chart."""
+    df = pd.DataFrame(list(mapping.items()), columns=["Letter", "Digit"])
+    df = df.sort_values(by="Letter")  # Sort by letter for better visualization
+    
+    # Plot a bar chart to visualize the mapping
+    df.plot(kind="bar", x="Letter", y="Digit", legend=False)
+    plt.title("Letter to Digit Mapping")
+    plt.ylabel("Digit")
+    plt.xticks(rotation=0)
+    plt.show()
 
 def solve_crypt_puzzle(word1, word2, result):
     # Generate a set containing all the characters used in the puzzle
@@ -30,13 +44,17 @@ def solve_crypt_puzzle(word1, word2, result):
         val2 = sum(mapping[char] * (10 ** (len(word2) - i - 1)) for i, char in enumerate(word2))
         res = sum(mapping[char] * (10 ** (len(result) - i - 1)) for i, char in enumerate(result))
 
-        # If the operation satisfies the condition, print the mapping
+        # If the operation satisfies the condition, print the mapping and visualize it
         if val1 + val2 == res:
+            print(f"Solution found: {word1} + {word2} = {result}")
             for letter, value in mapping.items():
                 print(f"{letter} = {value}")
+            
+            # Visualize the mapping
+            visualize_mapping(mapping)
             print()
 
-# input from the user
+# Input from the user
 operand1 = input("Enter line 1> ").upper()
 operand2 = input("Enter line 2> ").upper()
 result = input("Enter line 3> ").upper()
