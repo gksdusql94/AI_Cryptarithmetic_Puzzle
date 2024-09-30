@@ -34,6 +34,43 @@ Ensure that you have Python 3 installed on your system. This project does not re
 
 ## 📝 Solutions:
 
+```python
+def solve_crypt_puzzle(word1, word2, result):
+    # Generate a set containing all the characters used in the puzzle
+    letters = set(word1 + word2 + result)
+    # If the number of unique characters is more than 10, the input is invalid
+    if len(letters) > 10:
+        print("Invalid input: More than 10 unique characters")
+        return
+
+    # Iterate over all permutations of numbers from 0 to 9
+    for perm in permutations(range(10), len(letters)):
+        # Create a mapping between characters and numbers
+        mapping = dict(zip(letters, perm))
+        # If 0 is assigned to the first character of any word, it's not valid
+        if mapping[word1[0]] == 0 or mapping[word2[0]] == 0 or mapping[result[0]] == 0:
+            continue
+
+        # Convert each character to a number
+        val1 = sum(mapping[char] * (10 ** (len(word1) - i - 1)) for i, char in enumerate(word1))
+        val2 = sum(mapping[char] * (10 ** (len(word2) - i - 1)) for i, char in enumerate(word2))
+        res = sum(mapping[char] * (10 ** (len(result) - i - 1)) for i, char in enumerate(result))
+
+        # If the operation satisfies the condition, print the mapping and visualize it
+        if val1 + val2 == res:
+            print(f"Solution found: {word1} + {word2} = {result}")
+            for letter, value in mapping.items():
+                print(f"{letter} = {value}")
+            
+            # Visualize the mapping
+            visualize_mapping(mapping)
+            print()
+# Input from the user
+operand1 = input("Enter line 1> ").upper()
+operand2 = input("Enter line 2> ").upper()
+result = input("Enter line 3> ").upper()
+```
+
 S = 9
 E = 5
 N = 6
