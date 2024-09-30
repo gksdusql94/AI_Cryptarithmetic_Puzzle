@@ -37,6 +37,7 @@ M = 1
 O = 0
 R = 8
 Y = 2
+
 ![image](https://github.com/user-attachments/assets/bafc9601-b85b-4fee-92cf-2242e4d9333d)
 
 ## How It Works
